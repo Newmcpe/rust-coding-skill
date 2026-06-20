@@ -6,11 +6,11 @@ Agents reach for whatever they saw most in training: `&String` parameters, `.unw
 
 ## How it works
 
-Progressive disclosure. A lean core — an operating procedure, a list of non-negotiables, and a routing table — lives in the entrypoint your agent reads. The detail lives in `rust-coding-skill/references/`, and the agent opens only the file the current task needs. Same rules, many front doors:
+Progressive disclosure. A lean core — an operating procedure, a list of non-negotiables, and a routing table — lives in the entrypoint your agent reads. The detail lives in `references/`, and the agent opens only the file the current task needs. Same rules, many front doors:
 
 | Agent | Reads |
 |---|---|
-| Claude Code / Agent Skills | `rust-coding-skill/SKILL.md` |
+| Claude Code / Agent Skills | `SKILL.md` |
 | Codex, Zed, Aider, Jules, … | `AGENTS.md` |
 | Cursor | `.cursor/rules/idiomatic-rust.mdc` |
 | GitHub Copilot | `.github/copilot-instructions.md` |
@@ -43,18 +43,18 @@ Each reference is a dense set of rules with short good-vs-bad code blocks and th
 
 ```sh
 git clone https://github.com/Newmcpe/rust-coding-skill.git
-cp -r rust-coding-skill/rust-coding-skill ~/.claude/skills/
+cp -r rust-coding-skill ~/.claude/skills/
 ```
 
-**Any other agent** — the adapter files (`AGENTS.md`, `.cursor/rules/…`, `.github/copilot-instructions.md`, `.clinerules`, `.windsurfrules`) already ship in this repo and point at `rust-coding-skill/references/`. Either point your agent at a clone of this repo, or vendor the adapter you need plus the `rust-coding-skill/references/` folder into your own project.
+**Any other agent** — the adapter files (`AGENTS.md`, `.cursor/rules/…`, `.github/copilot-instructions.md`, `.clinerules`, `.windsurfrules`) already ship in this repo and point at `references/`. Either point your agent at a clone of this repo, or vendor the adapter you need plus the `references/` folder into your own project.
 
 ## Verification gate
 
 The ruleset requires the agent to actually run the checks, not just claim success. A bundled gate it can invoke:
 
 ```sh
-rust-coding-skill/scripts/check.sh    # POSIX
-rust-coding-skill/scripts/check.ps1   # Windows
+scripts/check.sh    # POSIX
+scripts/check.ps1   # Windows
 ```
 
 Both run `cargo fmt --check`, `cargo clippy --all-targets -- -D warnings`, and `cargo test`, stopping on the first failure.

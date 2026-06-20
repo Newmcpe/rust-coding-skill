@@ -1,6 +1,6 @@
 # Idiomatic Rust
 
-When writing, refactoring, or reviewing Rust, follow this ruleset. The full version is in `AGENTS.md`; per-topic detail is in `rust-coding-skill/references/` — consult the relevant file.
+When writing, refactoring, or reviewing Rust, follow this ruleset. The full version is in `AGENTS.md`; per-topic detail is in `references/` — consult the relevant file.
 
 ## Procedure
 1. **Types first** — enums for "one of", structs for "all of", newtypes for meaningful primitives; make invalid states unrepresentable. (`data-modeling.md`)

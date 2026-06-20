@@ -6,7 +6,7 @@ alwaysApply: false
 
 # Idiomatic Rust
 
-When writing, refactoring, or reviewing Rust, follow this. Full ruleset in `AGENTS.md`; topic detail on demand in `rust-coding-skill/references/`.
+When writing, refactoring, or reviewing Rust, follow this. Full ruleset in `AGENTS.md`; topic detail on demand in `references/`.
 
 ## Procedure
 1. **Types first** — enums for "one of", structs for "all of", newtypes for meaningful primitives; make invalid states unrepresentable. → `data-modeling.md`
@@ -25,7 +25,7 @@ When writing, refactoring, or reviewing Rust, follow this. Full ruleset in `AGEN
 - Standard naming: `snake_case` items, `CamelCase` types, `SCREAMING_SNAKE_CASE` consts.
 
 ## More detail (open on demand)
-`rust-coding-skill/references/`: ownership-borrowing · error-handling · data-modeling · traits-generics-lifetimes · collections-iterators · project-structure · smart-pointers · concurrency · testing · api-design-naming · unsafe-ffi · idioms-antipatterns · security-tooling
+`references/`: ownership-borrowing · error-handling · data-modeling · traits-generics-lifetimes · collections-iterators · project-structure · smart-pointers · concurrency · testing · api-design-naming · unsafe-ffi · idioms-antipatterns · security-tooling
 
 ## Verification
 Not done until clean: `cargo fmt --check && cargo clippy --all-targets -- -D warnings && cargo test`.
