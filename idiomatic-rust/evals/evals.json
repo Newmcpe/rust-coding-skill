@@ -1,0 +1,26 @@
+{
+  "should_trigger": [
+    "Write a Rust function that parses a config file and returns the parsed settings, handling missing keys gracefully.",
+    "Can you refactor this Rust module to be more idiomatic? It's full of unwrap() calls and clones everywhere.",
+    "I'm getting 'cannot borrow `self` as mutable more than once' in my Rust code. Here's the function, can you fix the borrow-checker error?",
+    "Help me design proper error handling for this Rust crate. Should I use a custom error enum with thiserror or just Box<dyn Error>?",
+    "Review this .rs file and tell me where it deviates from Rust best practices.",
+    "Make this Rust code idiomatic — I just translated it from C and it shows.",
+    "Run through the clippy warnings on this Rust file and clean them up properly.",
+    "In my Rust app, should I use Arc<Mutex<T>> or Rc<RefCell<T>> for sharing this state between threads?",
+    "I wrote this iterator chain in Rust but it feels clunky with all the collect() calls. Can you simplify it?",
+    "Convert this Rust struct to use the builder pattern and add proper Default and From implementations.",
+    "My Rust code uses a lot of String when it could probably take &str. Can you fix the lifetimes and make the APIs more ergonomic?",
+    "Implement a trait in Rust for this type so it works with the standard library's Iterator, and make sure it's zero-cost."
+  ],
+  "should_not_trigger": [
+    "Write a Python script that scrapes a webpage and saves the results to a CSV.",
+    "Refactor this Go HTTP handler to use the new context package properly.",
+    "My React component re-renders too often, can you fix the useEffect dependencies in this JS file?",
+    "How do I squash the last three commits into one with git interactive rebase?",
+    "Proofread this blog post intro and make the tone more conversational.",
+    "Set up a GitHub Actions workflow to run my Node.js test suite on every push.",
+    "Explain the difference between TCP and UDP for a networking class.",
+    "Help me write a SQL query to find the top 10 customers by total order value."
+  ]
+}

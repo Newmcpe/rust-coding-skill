@@ -1,0 +1,11 @@
+# Extracted book text — copyrighted source material, never commit
+.build/
+*.pdf
+*.txt
+
+# OMC scratch
+.omc/
+
+# OS
+Thumbs.db
+.DS_Store
