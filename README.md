@@ -1,4 +1,4 @@
-# idiomatic-rust
+# rust-coding-skill
 
 A [Claude Code](https://docs.claude.com/en/docs/claude-code) skill that makes coding agents write Rust the way an experienced Rust developer would — instead of Rust that merely compiles.
 
@@ -32,7 +32,7 @@ Clone and drop the skill folder into your Claude Code skills directory:
 
 ```sh
 git clone https://github.com/Newmcpe/rust-coding-skill.git
-cp -r rust-coding-skill/idiomatic-rust ~/.claude/skills/
+cp -r rust-coding-skill/rust-coding-skill ~/.claude/skills/
 ```
 
 It triggers automatically on Rust work — writing, refactoring, reviewing, fixing borrow-checker errors, cleaning up clippy lints. No flag needed.
@@ -42,8 +42,8 @@ It triggers automatically on Rust work — writing, refactoring, reviewing, fixi
 The skill requires the agent to actually run the checks, not just claim success. There's a bundled gate it can invoke:
 
 ```sh
-idiomatic-rust/scripts/check.sh    # POSIX
-idiomatic-rust/scripts/check.ps1   # Windows
+rust-coding-skill/scripts/check.sh    # POSIX
+rust-coding-skill/scripts/check.ps1   # Windows
 ```
 
 Both run `cargo fmt --check`, `cargo clippy --all-targets -- -D warnings`, and `cargo test`, stopping on the first failure.

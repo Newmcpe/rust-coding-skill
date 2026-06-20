@@ -1,5 +1,5 @@
 ---
-name: idiomatic-rust
+name: rust-coding-skill
 description: Use whenever writing, reviewing, refactoring, or generating Rust — any .rs file, Cargo project, or request like "write a Rust function/CLI/library", "fix this Rust", "make this idiomatic", "satisfy the borrow checker", or "clean up clippy warnings". This skill makes code-writing agents produce clean, correct, idiomatic Rust: it enforces type-system-first data modeling so invalid states are unrepresentable, Result/? error handling instead of panics, iterator chains over index loops, ownership and borrowing that the borrow checker accepts without needless clones or unwraps, and a mandatory cargo fmt + cargo clippy -D warnings + cargo test gate before any work is called done. Covers application, library, systems, and network/security tooling code alike. Apply it proactively on every Rust task, not only when asked.
 ---
 
