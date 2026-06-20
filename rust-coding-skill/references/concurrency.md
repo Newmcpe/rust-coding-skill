@@ -17,9 +17,26 @@ let v = vec![1, 2, 3];
 thread::spawn(|| println!("{v:?}")); // closure may outlive `v`
 ```
 
-Keep the `JoinHandle` and `join()` it. When the main thread exits, spawned threads are killed mid-flight regardless of state, so unjoined work is silently lost. `join()` also surfaces a thread's panic as an `Err`.
+Keep the `JoinHandle` and `join()` it. Returning from `main` exits the entire program even while other threads are still running, so unjoined work is silently lost. `join()` blocks until the thread finishes and surfaces a thread's panic as an `Err`; return a value out of a thread by returning it from the closure and reading it from `join()`'s `Ok`.
+
+```rust
+let t = thread::spawn(move || numbers.iter().sum::<u64>());
+let total = t.join().unwrap();
+```
+
+When you need a stack size, a thread name (shown in panic messages and debuggers), or to handle spawn failure instead of panicking, build with `thread::Builder::new()` — bare `thread::spawn` panics if the OS can't create the thread, whereas `Builder::spawn` returns an `io::Result`.
 
 To join a `Vec<JoinHandle>`, iterate by value (`for h in handles`) or drain with `while let Some(h) = handles.pop()` — `join()` consumes the handle, so iterating by `&` fails with E0507 (cannot move out behind a shared reference).
+
+When threads provably won't outlive the current scope, use `thread::scope` instead of `spawn` + `move` + manual `join`. Scoped threads carry no `'static` bound, so they can borrow local variables by reference, and every unjoined thread is automatically joined when the scope closes — no leaked handles, no forced ownership transfer. The borrow checker still applies inside the scope: concurrent shared (`&`) borrows of unmodified data are allowed, but two threads taking `&mut` to the same local is a compile error.
+
+```rust
+let data = vec![1, 2, 3];
+thread::scope(|s| {
+    s.spawn(|| println!("len {}", data.len()));
+    s.spawn(|| data.iter().sum::<i32>());
+});
+```
 
 Keep thread counts at or below the physical core count for CPU-bound work. Threads are not free: each consumes memory and invalidates caches on every context switch, so a spin-loop workload scales near-linearly up to core count and then degrades sharply. Spawning one thread per work item when items number in the thousands is a pessimization — use a fixed-size pool sized to `num_cpus::get()` (or rayon).
 
